@@ -46,4 +46,5 @@ Then, someone has modified master, eg. added new feature. We want to refresh con
 
 To update all branches you could also run something like
 
+    git fetch --all
     for branch in $(git br |grep -v master |xargs) ; do git checkout "${branch}" ; git rebase master ; make Dockerfile ; git add Dockerfile ; git commit -m "Update to latest Dockerfile" ; git rebase "origin/${branch}" ; git push ; done
