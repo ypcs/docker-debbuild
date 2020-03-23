@@ -16,9 +16,11 @@ RUN adduser --disabled-password --gecos "user,,," user && \
 
 WORKDIR /usr/src
 
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /usr/local/bin/debbuild
 
-ENTRYPOINT ["/entrypoint.sh"]
+RUN ln -s /usr/local/bin/debbuild /entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/debbuild"]
 CMD ["build"]
 
 ENV SOURCE_DIR ""
