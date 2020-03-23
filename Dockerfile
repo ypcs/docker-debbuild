@@ -1,4 +1,4 @@
-FROM ypcs/debian:sid
+FROM ypcs/debian:bullseye
 
 ARG APT_PROXY
 
