@@ -46,8 +46,12 @@ case "${COMMAND}"
 in
     collect-artifacts)
     	# FIXME: collect artifacts to /artifacts or something
-	echo "FIXME: collect artifacts"
-	# FIXME: check if /artifacts/.directory-not-mounted or something exists (and provide that by default)
+	if [ -e "/artifacts/.directory-not-mounted" ]
+	then
+            echo "Found flag file, it seems that /artifacts isn't a volume. Skip copying artifacts."
+	    exit 0
+	fi
+	cp *.deb *.dsc *.changes *.buildinfo *.xz *.gz *.bz2 /artifacts/
     ;;
     install-deps)
         echo "Installing build dependencies..."
