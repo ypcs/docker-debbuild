@@ -91,7 +91,7 @@ in
 	esac
 	echo "Install build dependencies..."
 	$0 install-deps
-	chown user ..
+	chown user .. ../*.*
 	chown -R user .
 	ls -lha
 	ls -lha ..
