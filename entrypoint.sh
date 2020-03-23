@@ -96,7 +96,7 @@ in
 	ls -lha
 	ls -lha ..
     	gosu user dpkg-buildpackage -us -uc
-	gosu user sha256sum ../*.*
+	find ../ -maxdepth 1 -type f -exec sha256sum "{}" \;
     ;;
     *)
     	echo "Unknown command: '${COMMAND}'." && exit 1
