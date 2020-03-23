@@ -43,3 +43,7 @@ Then, someone has modified master, eg. added new feature. We want to refresh con
 
     git checkout ubuntu-bionic
     git rebase origin/master
+
+To update all branches you could also run something like
+
+    for branch in $(git br |grep -v master |xargs) ; do git checkout "${branch}" ; git rebase master ; make Dockerfile ; git add Dockerfile ; git commit -m "Update to latest Dockerfile" ; git push -f ; done
