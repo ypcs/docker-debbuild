@@ -97,6 +97,7 @@ in
 	ls -lha ..
     	gosu user dpkg-buildpackage -us -uc
 	find ../ -maxdepth 1 -type f -exec sha256sum "{}" \;
+	$0 collect-artifacts
     ;;
     *)
     	echo "Unknown command: '${COMMAND}'." && exit 1
