@@ -1,4 +1,4 @@
-FROM ypcs/debian:sid
+FROM ypcs/debian:buster
 
 ARG APT_PROXY
 
