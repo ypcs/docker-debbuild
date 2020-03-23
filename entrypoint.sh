@@ -55,7 +55,9 @@ in
     ;;
     install-deps)
         echo "Installing build dependencies..."
+	/usr/lib/docker-helpers/apt-setup
         mk-build-deps --build-dep --install --remove --tool "apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends -y"
+	/usr/lib/docker-helpers/apt-cleanup
     ;;
     get-source)
 	if [ -z "${PACKAGE}" ]
