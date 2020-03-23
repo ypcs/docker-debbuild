@@ -4,7 +4,7 @@ DOCKER ?= docker
 all:
 
 Dockerfile: Dockerfile.in
-	cp $< $@
+	cat "$<" |sed "s,^FROM .*,FROM ypcs/$(shell git branch --show-current |sed 's/-/:/g'),g" > $@
 
 build:
 	$(DOCKER) build --build-arg='APT_PROXY=http://10.0.2.149:3142/' -t ypcs/debbuild:latest .
