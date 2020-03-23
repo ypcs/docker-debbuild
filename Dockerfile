@@ -1,4 +1,4 @@
-FROM ypcs/debian:sid
+FROM ypcs/ubuntu:bionic
 
 ARG APT_PROXY
 
