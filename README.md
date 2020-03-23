@@ -23,6 +23,26 @@ Build "random" package using sources we just cloned from the web. Requirement: m
     docker run --volume $(pwd)/artifacts:/artifacts:rw --volume ./mysources:/usr/src/mysources:rw -e SOURCE_DIR=/usr/src/mysources ypcs/debbuild:debian-buster
 
 
+### Advanced
+If you need to eg. use your own sources or do other stuff, you can just use these images as base image. Ie. you can do something like
+
+```
+FROM ypcs/debbuild:debian-sid
+
+RUN echo 'deb http://custom-repository.net/debian sid main' >> /etc/apt/sources.list.d/custom.list && \
+    apt-get update && apt-get -y install git
+
+RUN git clone https://your-custom-source.net/path/to/repo
+```
+
+then, build image
+
+    docker build -t mycustombuilder .
+
+and finally execute like other debbuild boxes
+
+    docker run --volume $(pwd)/artifacts:/artifacts:rw --volume ./mysources:/usr/src/mysources:rw -e SOURCE_DIR=/usr/src/mysources mycustombuilder
+
 
 ## Development
 Development is done in master branch. Changes should be synced to version-specific branches, and then Dockerfile should be updated using Makefile magic.
