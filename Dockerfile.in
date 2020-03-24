@@ -23,5 +23,10 @@ RUN ln -s /usr/local/bin/debbuild /entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/debbuild"]
 CMD ["build"]
 
+# Path to package sources. Should be below /usr/src, as I don't intent
+# to test this tool with anything else.
 ENV SOURCE_DIR ""
+
+# Package to be built using sources from base image's source repository,
+# eg. Debian or Ubuntu release
 ENV PACKAGE ""
