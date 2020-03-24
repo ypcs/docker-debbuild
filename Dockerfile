@@ -16,10 +16,17 @@ RUN adduser --disabled-password --gecos "user,,," user && \
 
 WORKDIR /usr/src
 
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /usr/local/bin/debbuild
 
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["build"]
+RUN ln -s /usr/local/bin/debbuild /entrypoint.sh
 
+ENTRYPOINT ["/usr/local/bin/debbuild"]
+CMD ["default"]
+
+# Path to package sources. Should be below /usr/src, as I don't intent
+# to test this tool with anything else.
 ENV SOURCE_DIR ""
+
+# Package to be built using sources from base image's source repository,
+# eg. Debian or Ubuntu release
 ENV PACKAGE ""
