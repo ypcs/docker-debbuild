@@ -21,7 +21,7 @@ COPY entrypoint.sh /usr/local/bin/debbuild
 RUN ln -s /usr/local/bin/debbuild /entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/debbuild"]
-CMD ["build"]
+CMD ["default"]
 
 # Path to package sources. Should be below /usr/src, as I don't intent
 # to test this tool with anything else.
