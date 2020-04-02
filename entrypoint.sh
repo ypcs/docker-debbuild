@@ -117,6 +117,10 @@ in
 	find ../ -maxdepth 1 -type f -exec sha256sum "{}" \;
     ;;
     default)
+	if [ -n "${PACKAGE}" ]
+	then
+            $0 get-source
+	fi
 	$0 install-deps
 	$0 build
 	$0 collect-artifacts
