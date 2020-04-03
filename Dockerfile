@@ -7,6 +7,7 @@ RUN /usr/lib/docker-helpers/apt-setup && \
     apt-get --assume-yes install \
         build-essential \
         devscripts \
+        equivs \
         gosu && \
     /usr/lib/docker-helpers/apt-cleanup
 
