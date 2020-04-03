@@ -109,7 +109,7 @@ in
 		exit 1
 	    ;;
 	esac
-	chown user .. ../*.*
+	chown user .. ../*
 	chown -R user .
 	ls -lha
 	ls -lha ..
