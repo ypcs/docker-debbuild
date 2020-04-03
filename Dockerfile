@@ -2,7 +2,8 @@ FROM ypcs/ubuntu:bionic
 
 ARG APT_PROXY
 
-RUN /usr/lib/docker-helpers/apt-setup && \
+RUN sed -i 's/main$/main universe/g' /etc/apt/sources.list && \
+    /usr/lib/docker-helpers/apt-setup && \
     /usr/lib/docker-helpers/apt-upgrade && \
     apt-get --assume-yes install \
         build-essential \
