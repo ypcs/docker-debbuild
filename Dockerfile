@@ -8,6 +8,7 @@ RUN sed -i 's/main$/main universe/g' /etc/apt/sources.list && \
     apt-get --assume-yes install \
         build-essential \
         devscripts \
+        equivs \
         gosu && \
     /usr/lib/docker-helpers/apt-cleanup
 
